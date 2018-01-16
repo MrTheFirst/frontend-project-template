@@ -1,0 +1,17 @@
+mixin title(tag, modList, text)
+    -var defaultClass = 'title'
+    -var classList = ''
+    -var content = ''
+    if modList
+        -var classList = defaultClass + ' '
+        each mod in modList
+            -classList += defaultClass + '_' + mod + ' '
+    else
+        -classList = defaultClass
+
+    if text
+        -content = text
+
+    div(class=classList)
+        #{tag}
+            = text

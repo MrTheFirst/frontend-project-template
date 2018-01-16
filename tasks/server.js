@@ -7,7 +7,7 @@ const { PORT, OPEN, NODE_ENV, TUNNEL } = process.env;
 
 gulp.task('server', () => (
 	bs.init({
-		files: ['dist/**/*'],
+		files: ['build/**/*'],
 		open: !!OPEN,
 		reloadOnRestart: true,
 		port: PORT || 3000,
@@ -19,7 +19,7 @@ gulp.task('server', () => (
 		server: {
 			baseDir: [
 				'app/resources',
-				'dist'
+				'build'
 			],
 			directory: false,
 			middleware: NODE_ENV !== 'production' ? [debuga()] : []

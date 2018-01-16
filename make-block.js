@@ -13,7 +13,7 @@ const BLOCKS_DIR = path.join(__dirname, 'app/blocks');
 // default content for files in new block
 const fileSources = {
 	pug: `mixin {blockName}()\n\t+b.{blockName}&attributes(attributes)\n\t\tblock\n`,
-	scss: `.{blockName}\n\tdisplay block\n`
+	scss: `.{blockName} {\n\tdisplay: block\n}`
 };
 
 function validateBlockName(blockName) {

@@ -1,9 +1,10 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import gulpIf from 'gulp-if';
-import stylint from 'gulp-stylint';
+import sassLint from 'gulp-sass-lint';
 import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
+import normalize from 'node-normalize-scss';
 import gcmq from 'gulp-group-css-media-queries';
 import nano from 'gulp-cssnano';
 import rename from 'gulp-rename';
@@ -20,21 +21,23 @@ gulp.task('styles', () => (
 			use: [
 				autoprefixer()
 			],
-			'include css': true
+			'include css': true,
+			includePaths: [normalize.includePaths]
 		}))
 		.pipe(gulpIf(!isDebug, gcmq()))
 		.pipe(gulpIf(!isDebug, nano({zindex: false})))
-		.pipe(rename({suffix: '.min'}))
-		.pipe(gulpIf(isDebug, sourcemaps.write()))
-		.pipe(gulp.dest('dist/assets/styles'))
+		.pipe(gulpIf(!isDebug, rename({suffix: '.min'})))
+		.pipe(gulpIf(isDebug, sourcemaps.write('/')))
+		.pipe(gulp.dest('build/assets/styles'))
 ));
 
 gulp.task('styles:lint', () => (
-	gulp.src(['app/**/*.scss', '!app/styles/**'])
-		.pipe(stylint({
-			reporter: 'stylint-stylish',
-			reporterOptions: {verbose: true}
+	gulp.src(['app/**/*.s+(a|c)ss'])
+		.pipe(sassLint({
+			files: {
+				ignore: 'app/styles/helpers/**.*'
+			}
 		}))
-		.pipe(stylint.reporter())
-		.pipe(stylint.reporter('fail', {failOnWarning: true}))
+		.pipe(sassLint.format())
+		.pipe(sassLint.failOnError())
 ));

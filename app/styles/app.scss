@@ -1,0 +1,58 @@
+@import 'helpers/fonts';
+@import 'normalize';
+@import 'helpers/variables';
+@import 'helpers/bootstrap-grid';
+@import 'helpers/mixins';
+// Blocks
+@import '../blocks/title/title';
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+body {
+	color: #505053;
+	font-family: 'GOSTUI2', 'SF Pro Display', Arial, serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	margin: 0;
+	padding: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+$headings: h6, h5, h4, h3, h2, h1;
+@each $heading in $headings {
+	#{$heading} {
+		display: inherit;
+		color: inherit;
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+		line-height: inherit;
+		letter-spacing: inherit;
+		margin: inherit;
+		padding: inherit;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

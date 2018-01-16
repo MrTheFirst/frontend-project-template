@@ -2,6 +2,7 @@ import gulp from 'gulp';
 import gulpIf from 'gulp-if';
 import plumber from 'gulp-plumber';
 import pug from 'gulp-pug';
+import pugbem from 'gulp-pugbem';
 import pugLinter from 'gulp-pug-linter';
 import prettify from 'gulp-jsbeautifier';
 import inheritance from 'gulp-pug-inheritance';
@@ -16,9 +17,12 @@ gulp.task('templates', () => (
 	gulp.src('app/**/*.pug')
 		.pipe(plumber({errorHandler: errorHandler('Error in \'templates\' task')}))
 		.pipe(cached('pug'))
-		.pipe(gulpIf(global.watch, inheritance({basedir: 'app'})))
+		.pipe(gulpIf(global.watch, inheritance({basedir: '/app/'})))
 		.pipe(filter(file => /app[\\\/]pages/.test(file.path)))
-		.pipe(pug({basedir: 'app'}))
+		.pipe(pug({
+			basedir: 'app',
+			plugins: [pugbem]
+		}))
 		.pipe(gulpIf(process.env.PRETTIFY !== false, prettify({
 			braceStyle: 'expand',
 			indentWithTabs: true,
@@ -31,11 +35,11 @@ gulp.task('templates', () => (
 			unformatted: ['use']
 		})))
 		.pipe(gulpIf(process.env.NODE_ENV === 'production', staticHash({
-			asset: 'dist',
+			asset: 'build',
 			exts: ['js', 'css']
 		})))
 		.pipe(rename({dirname: '.'}))
-		.pipe(gulp.dest('dist'))
+		.pipe(gulp.dest('build'))
 ));
 
 gulp.task('templates:lint', () =>

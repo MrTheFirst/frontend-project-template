@@ -4,7 +4,8 @@ import gulp from 'gulp';
 gulp.task('styles:dependencies', () => (
 	runSequence(
 		'icons',
-		'styles'
+		'styles',
+		'fonts'
 	)
 ));
 
@@ -12,7 +13,8 @@ gulp.task('default', () => (
 	runSequence(
 		[
 			'styles:dependencies',
-			'templates'
+			'templates',
+			'fonts',
 		],
 		'server',
 		'watch'
@@ -23,6 +25,7 @@ gulp.task('build', () => (
 	runSequence(
 		'styles:dependencies',
 		'scripts',
+		'fonts',
 		'copy',
 		'templates'
 	)

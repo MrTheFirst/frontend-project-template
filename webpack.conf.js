@@ -29,12 +29,14 @@ export default function makeWebpackConfig({
   eslint = true
 }) {
 	return {
-		entry: path.resolve('./app/scripts/app.js'),
+		entry: {
+			app: path.resolve('./app/scripts/app.js')
+		},
 		watch,
 		bail: false,
 		profile: true,
 		output: {
-			path: path.resolve('./dist/assets/scripts/'),
+			path: path.resolve('./build/assets/scripts/'),
 			filename: 'app.min.js',
 			pathinfo: false
 		},

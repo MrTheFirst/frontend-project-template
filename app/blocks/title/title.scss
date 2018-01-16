@@ -1,0 +1,64 @@
+.title {
+	font-family: 'GOSTUI2', 'SF Pro Display', Arial, serif;
+	font-weight: 500;
+	&.title_style-h1 {
+		font-size: 48px;
+		line-height: 1.08;
+		letter-spacing: -1.2px;
+	}
+	&.title_style-h2 {
+		font-size: 32px;
+		line-height: 1.25;
+		letter-spacing: -0.3px;
+	}
+	&.title_style-h3 {
+		font-size: 24px;
+	}
+	&.title_style-h4 {
+		font-size: 20px;
+		line-height: 1.4;
+	}
+}
+
+// Fonts style
+@mixin xxl-60 {
+	font-family: 'GOSTUI2', 'SF Pro Display', Arial, serif;
+	font-size: 60px;
+	font-weight: 500;
+	line-height: 0.87;
+	letter-spacing: -1.5px;
+}
+
+@mixin service-m-16 {
+	font-family: 'GOSTUI2', 'SF Pro Display', Arial, serif;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.5;
+}
+
+@mixin paragraph-16 {
+	font-family: 'GOSTUI2', 'SF Pro Display', Arial, serif;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+@mixin service-s-14 {
+	font-family: 'GOSTUI2', 'SF Pro Display', Arial, serif;
+	font-size: 14px;
+	line-height: 1.43;
+	letter-spacing: 0.3px;
+}
+
+@mixin service-xs-12 {
+	font-family: 'GOSTUI2', 'SF Pro Display', Arial, serif;
+	font-size: 12px;
+	line-height: 1.33;
+	letter-spacing: 1.2px;
+}
+
+@mixin service-xxs-12 {
+	font-family: 'GOSTUI2', 'SF Pro Display', Arial, serif;
+	font-size: 12px;
+	line-height: 1.67;
+	letter-spacing: 0.1px;
+}
